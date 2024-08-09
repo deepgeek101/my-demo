@@ -1,0 +1,56 @@
+#include <stdio.h>
+#include <stdlib.h>
+//divide and conquer two programs binary search [recursive] and find max and min[recursive]
+/*int bSearch(int *a,int i,int j){
+    if(i==j)
+        return i;
+    else if(i==j-1)
+    //this logic is for max and min
+}*/
+int *extremes(int *a,int i,int j){
+    int *r=calloc(2,sizeof(int));
+    int max,min;
+    if(i==j){
+        max=a[i];min=a[i];
+        r[0]=min;r[1]=max;
+    }
+    else if(i==j-1){
+    if(a[i]<a[j]){
+        min=a[i];
+        max=a[j];
+    }
+    else if(a[i]>a[j]){
+        max=a[i];
+        min=a[j];
+    }
+    else{
+        //why not make a recurive call by passing i=j as parameter bu that would mean we having a single-element array would that make a difference if logically
+        max=a[i];min=a[i];
+        r[0]=min;r[1]=max;
+    }
+    }
+    else{
+        max=a[0];min=a[0];
+        for(int t=1;t<=j;t++){
+            if(max<a[t])
+                max=a[t];
+            if(min>a[t])
+                min=a[t];
+        }
+        r[0]=min;
+    }
+    return r;
+}
+int main()
+{
+    printf("\nEnter the 5 elements to store in the array\n");
+//    int a[5]={0};
+    int a[5];
+    for(int i=0;i<5;i++)
+    scanf("%d",a[i]);
+    
+//    int* ret = bSearch(a,0,4);
+  int *ret = extremes(a,0,4);
+  printf("min value = %d\nmax value = %d",ret[0],ret[1]);
+    return 0;
+}
